@@ -17,6 +17,7 @@ class GildedRose
         send(special_action, item)
       else
         reduction = item.sell_in <= 0 ? 2 : 1
+        reduction *= 2 if /conjured/i =~ item.name
         item.quality = [item.quality - reduction, 0].max
         item.sell_in -= 1
       end
@@ -58,3 +59,5 @@ class Item
     "#{@name}, #{@sell_in}, #{@quality}"
   end
 end
+
+

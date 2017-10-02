@@ -74,5 +74,15 @@ describe GildedRose do
       GildedRose.new(items).update_quality()
       expect(items[0].quality).to eq 0
     end
+
+    it 'reduces quality twice as fast for conjured items' do
+      items = [
+        Item.new('Conjured spam', 20, 20),
+        Item.new('Conjured grapes', -5, 20)
+      ]
+      GildedRose.new(items).update_quality()
+      expect(items[0].quality).to eq 18
+      expect(items[1].quality).to eq 16
+    end
   end
 end
