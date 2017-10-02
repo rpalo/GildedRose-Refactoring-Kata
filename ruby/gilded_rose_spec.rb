@@ -44,10 +44,10 @@ describe GildedRose do
       expect(items[0].quality).to eq 50
     end
 
-    it "doesn't reduce the sell_in or quality of sulfuras" do
-      items = [Item.new('Sulfuras, Hand of Ragnaros', 20, 20)]
+    it "keeps the quality of sulfuras at 80" do
+      items = [Item.new('Sulfuras, Hand of Ragnaros', 20, 80)]
       GildedRose.new(items).update_quality()
-      expect(items[0].quality).to eq 20
+      expect(items[0].quality).to eq 80
       expect(items[0].sell_in).to eq 20
     end
 
